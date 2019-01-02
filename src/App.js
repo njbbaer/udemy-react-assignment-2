@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import ValidationComponent from './ValidationComponent/ValidationComponent';
+
 class App extends Component {
   state = {
-    textLength: 0
+    text: "Hello"
   }
 
-  textLengthHandler = (event) => {
-    this.setState({textLength: event.target.value.length});
+  textHandler = (event) => {
+    this.setState({text: event.target.value});
   }
 
   render() {
@@ -16,8 +18,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <input type="text" onChange={this.textLengthHandler}></input>
-          <p>{this.state.textLength} chars</p>
+          <input type="text" onChange={this.textHandler} value={this.state.text}></input>
+          <p>{this.state.text.length} chars</p>
+          <ValidationComponent text={this.state.text}/>
         </header>
       </div>
     );
