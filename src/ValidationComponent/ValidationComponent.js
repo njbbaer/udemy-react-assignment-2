@@ -7,4 +7,4 @@ const validationComponent = (props) => {
     return <p>Text too short</p>
 }
 
-export default validationComponent
+export default validationComponent;

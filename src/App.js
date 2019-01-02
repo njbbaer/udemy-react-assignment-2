@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import ValidationComponent from './ValidationComponent/ValidationComponent';
+import CharComponent from './CharComponent/CharComponent';
 
 class App extends Component {
   state = {
@@ -20,7 +21,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <input type="text" onChange={this.textHandler} value={this.state.text}></input>
           <p>{this.state.text.length} chars</p>
-          <ValidationComponent text={this.state.text}/>
+          <ValidationComponent text={this.state.text} />
+          <div>
+            {this.state.text.split("").map((char) => {
+              return <CharComponent char={char} />
+            })}
+          </div>
         </header>
       </div>
     );
