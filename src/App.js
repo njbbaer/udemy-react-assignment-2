@@ -14,6 +14,12 @@ class App extends Component {
     this.setState({text: event.target.value});
   }
 
+  deleteCharHandler = (index) => {
+    const chars = [...this.state.text.split("")];
+    chars.splice(index, 1);
+    this.setState({text: chars.join("")});
+  }
+
   render() {
     return (
       <div className="App">
@@ -23,8 +29,8 @@ class App extends Component {
           <p>{this.state.text.length} chars</p>
           <ValidationComponent text={this.state.text} />
           <div>
-            {this.state.text.split("").map((char) => {
-              return <CharComponent char={char} />
+            {this.state.text.split("").map((char, index) => {
+              return <CharComponent char={char} delete={() => this.deleteCharHandler(index)} />
             })}
           </div>
         </header>
